@@ -11,7 +11,8 @@ heading in markdown are specified by '#' symbol
 - `# heading` -use to create the largest heading just like `<h1>`
 - `## heading` -used to create heading similar to `<h2>`
 - `### heading` -used to create heading similar to `<h3>`
-
+* if you want to center a heading then you need to use html syntax insted of '#'<br>
+`# heading` should be written as `<h1 align="center">heading</h1>`
 
 
 [reference](https://www.markdownguide.org/basic-syntax/)
