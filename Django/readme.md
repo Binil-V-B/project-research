@@ -78,4 +78,55 @@ make sure to use this command after changing to the directory with the manage.py
 
 this means that the server is now live at 127.0.0.1:8000 and can be opened using the provide ip address.
 
+***
+### Creating the app
+The main difference between a project and an app is that an app is a feature of a project while a project is a collection of apps.
+
+To create an app make sure that you are on the same directory as manage.py and use the following command.
+
+    python manage.py startapp app_name
+
+this will create an app named app_name with the following directory arrangement.
+
+    app_name/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    views.py
+
+***
+***
+### Writing the first view
+First we need to add the following code to the views.py file in the app folder.
+
+    from django.http import HttpResponse
+
+    def index(request):
+        return HttpResponse("Hello, world. You're at the polls index.")
+
+Now we need to map a URL with this view inside the app so create a urls.py file inside the app directory (there is already a urls.py file in the <b>project root directory</b> but create a new file inside the <b>app directory</b>) and add the following code inside it.
+
+    from django.urls import path
+
+    from . import views
+
+    urlpatterns = [
+        path("", views.index, name="index"),
+    ]
+
+Now we need to point the root urlsCONF file to urlsCONF of the app
+
+    from django.contrib import admin
+    from django.urls import include, path
+
+    urlpatterns = [
+        path("app/", include("app_name.urls")),
+        path("admin/", admin.site.urls),
+    ]
+
+instead of using ```app/``` we can use any name for our urls. We have to always use include when referencing urls other than admin.site.urls.
 
